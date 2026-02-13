@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script src="https://cdn.jsdelivr.net/npm/simple-crypto-js@legacy/dist/SimpleCrypto.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>recitation2 - CSDC105</title>
+    <style>
+       li {
+	    margin-left: 20px
+       }
+        body {
+            background-color: #0d1117; 
+            color: #c9d1d9;            
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 750px;
+            text-align: center;
+        }
+        h1 {
+	     color: #58a6ff;
+	     font-size: 2.5;
+	}
+        h2 {
+	     color: #7ee787;
+	     margin-bottom: 30; 
+	}
+        .webpage_introduction {
+            max-width: 500px;
+            margin: 0 auto 20px auto; 
+            font-size: 1.1;
+        }
+        .list-section {
+            text-align: justify;
+            display: block;
+            margin-left: 150px;
+        }
+        img {
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 450px;
+        }
+        hr {
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #30363d;
+            margin: 40px 0;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1px;
+        }
+        button:hover {
+            background-color: #2ea043;
+        }
+        #js-output {
+            margin-top: 20px;
+            font-size: 1.2px;
+            min-height: 1.5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+	 <input type="text" id="decrypt_input"></input>
+	 <button id="decrypt_button">decrypt</button>
+        <h1>My Ultimate College Life Web Page</h1>
+        <h2 class="something-enc">c5d2eecbc263b5abb93e2e2ab3527829b201f5d048eab68cb2e8dfc1528e8415CapBYL9+o8H3IjB/dbv+KPWJ7Ne7VQxopIFjNN6o+hM=f71a395d0e3dc33afb0c2e3fc6836da33f8bcd744bbeffa186c000c44462684a</h2>
+        <hr>
+        <p class="webpage_introduction">
+            I am a <b>Computer Science student</b> taking trends and application development which is <i>CSDC105</i>. 
+            I am ready to learn more about the course and learn more about web applications! 
+            As a student, I am very curious about how these systems function.
+        </p>
+        <img src="https://techwiseinsider.com/wp-content/uploads/2024/11/Arch-Linux-Logo-in-Dark-Background.jpg" alt="Coding Image">
+        <div class="list-section">
+            <h3>College Must-Haves</h3>
+            <ul>
+                <li>Laptop</li>
+                <li>Food and Water</li>
+                <li>Brain</li>
+                <li>Notebook</li>
+            </ul>
+
+            <h3>Daily Routine</h3>
+            <ol>
+		<li>Wake up and Eat</li>
+                <li>Review</li>
+                <li>Go to School and do Stuff</li>
+                <li>Go back Home Sleep</li>
+                <li>Repeat</li>
+            </ol>
+        </div>
+        <h3>Hobbies & Interests</h3>
+        <p>
+            I enjoy <b>learning</b>!
+        </p>
+        <h3>Seminars & Certifications</h3>
+	<p>None</p> 
+        <hr>
+        <button id="vibeCheckBtn">EXECUTE INTERACTION</button>
+        <p id="js-output"></p>
+    </div>
+    <script>
+	 $("#decrypt_button").on("click", () => {
+	      var crypt = new SimpleCrypto($("#decrypt_input").val())
+	      try {
+		   $(".something-enc").text((i,original_text) => {
+			 return crypt.decrypt(original_text)
+		   })
+	      }
+	      catch {
+		   alert("wrong password...")
+	      }
+	 })
+
+        const btn = document.getElementById('vibeCheckBtn');
+        const output = document.getElementById('js-output');
+
+        btn.addEventListener('click', () => {
+
+            output.innerHTML = "<b>Status:</b> Interaction successfully recorded! ✅";
+            output.style.color = "#7ee787";
+            
+            alert("this is an alert!");
+        });
+    </script>
+</body>
+</html>
